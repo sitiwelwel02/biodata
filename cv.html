@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>CV — Siti Hasanah</title>
+<style>
+  @page { size: A4; margin: 0; }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --baby-blue:  #d6ecf9;
+    --baby-blue-2:#a9d6f0;
+    --lilac:      #e2d7f8;
+    --lilac-2:    #b9a6ec;
+    --sky:        #4a94cc;
+    --violet:     #7a63c9;
+    --ink:        #1e2937;
+    --ink-soft:   #4b5a6e;
+    --line:       #d9e4f0;
+  }
+
+  html, body {
+    width: 210mm; height: 297mm;
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+    color: var(--ink);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body { background: #fff; }
+
+  .page {
+    width: 210mm; min-height: 297mm;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    display: flex; flex-direction: column;
+  }
+
+  /* ===== HEADER ===== */
+  header {
+    background: linear-gradient(135deg, #bfe3f7 0%, #cdd8f7 48%, #d9ccf5 100%);
+    padding: 11mm 12mm 9mm;
+    display: flex; align-items: center; gap: 7mm;
+    position: relative;
+  }
+  header::after {
+    content: ""; position: absolute; right: -22mm; bottom: -26mm;
+    width: 58mm; height: 58mm; border-radius: 50%;
+    background: rgba(255,255,255,.30);
+  }
+
+  .foto {
+    width: 32mm; height: 32mm; border-radius: 50%;
+    background: #fff; padding: 1.6mm; flex: 0 0 auto;
+    box-shadow: 0 2mm 5mm rgba(90,110,160,.28);
+  }
+  .foto img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; object-position: center top; display: block; }
+
+  .identitas { position: relative; z-index: 1; }
+  .identitas .sapaan {
+    font-size: 6.6pt; letter-spacing: 2.4px; text-transform: uppercase;
+    color: #4b6f97; font-weight: 600; margin-bottom: 1mm;
+  }
+  .identitas h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 25pt; line-height: 1.1; color: #16202e; margin-bottom: 1.6mm;
+  }
+  .identitas .profesi {
+    font-size: 9.4pt; color: #3f5b7d; font-weight: 500; margin-bottom: 3mm;
+  }
+  .kontak-inline { display: flex; flex-wrap: wrap; gap: 1.4mm 6mm; font-size: 8.6pt; color: #24405f; }
+  .kontak-inline span { display: flex; align-items: center; gap: 1.6mm; }
+  .kontak-inline b { font-weight: 600; }
+
+  /* ===== BODY 2 KOLOM ===== */
+  .isi { display: flex; padding: 8mm 12mm 0; gap: 8mm; flex: 1; }
+
+  .kiri { width: 54mm; flex: 0 0 54mm; }
+  .kanan { flex: 1; }
+
+  .blok { margin-bottom: 5.5mm; }
+  .kiri .blok:last-child, .kanan .blok:last-child { margin-bottom: 0; }
+
+  /* Baris bawah penanda tangan sebagai pembatas konten */
+  .batas-ttd { display: none; }
+
+  h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 12pt; color: #16202e;
+    padding-bottom: 2.2mm; margin-bottom: 3mm;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+  }
+  h2::after {
+    content: ""; position: absolute; left: 0; bottom: -1px;
+    width: 18mm; height: 1.6mm; border-radius: 1mm;
+    background: linear-gradient(90deg, var(--baby-blue-2), var(--lilac-2));
+  }
+  .kiri h2 { font-size: 10.2pt; padding-bottom: 1.8mm; }
+
+  /* ===== TABEL DATA PRIBADI ===== */
+  table.data { width: 100%; border-collapse: collapse; }
+  table.data td {
+    padding: 1.5mm 0; font-size: 8.4pt; vertical-align: top;
+    border-bottom: 1px dashed #e6edf6; line-height: 1.4;
+  }
+  table.data tr:last-child td { border-bottom: none; }
+  table.data td.kunci {
+    color: var(--violet); font-weight: 600; width: 26mm;
+    padding-right: 2.5mm; white-space: nowrap;
+  }
+  table.data td.nilai { font-size: 7.9pt; word-break: break-all; }
+
+  /* ===== PENDIDIKAN ===== */
+  .item { margin-bottom: 4mm; }
+  .item:last-child { margin-bottom: 0; }
+  .item .judul { font-size: 10.2pt; font-weight: 600; color: #16202e; }
+  .item .sub {
+    font-size: 8.4pt; color: var(--ink-soft);
+    display: inline-block; margin: .8mm 0 1.4mm;
+    background: linear-gradient(135deg, #eef6fd, #f4f0fc);
+    border: 1px solid var(--line); border-radius: 20mm;
+    padding: .5mm 2.4mm;
+  }
+  .item p { font-size: 8.6pt; color: var(--ink-soft); line-height: 1.55; }
+
+  /* ===== PROFIL ===== */
+  .profil p { font-size: 8.8pt; line-height: 1.65; color: #3c4b5e; text-align: justify; }
+  .profil p + p { margin-top: 2mm; }
+  .profil strong { color: var(--ink); }
+
+  /* ===== DAFTAR KEAHLIAN ===== */
+  .skill-list { list-style: none; }
+  .skill-list li {
+    display: flex; align-items: flex-start; gap: 2.2mm;
+    font-size: 8.6pt; color: #3c4b5e; padding: 1.3mm 0; line-height: 1.45;
+  }
+  .skill-list .tick {
+    flex: 0 0 auto; width: 3.6mm; height: 3.6mm; border-radius: 50%;
+    background: linear-gradient(135deg, var(--baby-blue-2), var(--lilac-2));
+    color: #fff; font-size: 5.4pt; font-weight: 700;
+    display: flex; align-items: center; justify-content: center; margin-top: .4mm;
+  }
+
+  /* ===== BAR KEAHLIAN ===== */
+  .keAhli { margin-bottom: 2.6mm; }
+  .keAhli:last-child { margin-bottom: 0; }
+  .keAhli .baris { display: flex; justify-content: space-between; font-size: 8.4pt; margin-bottom: 1mm; }
+  .keAhli .baris span:first-child { font-weight: 500; color: #2b3948; }
+  .keAhli .baris span:last-child { color: var(--violet); font-weight: 600; }
+  .track { height: 1.8mm; background: #eaf0f7; border-radius: 2mm; overflow: hidden; }
+  .track i { display: block; height: 100%; border-radius: 2mm; background: linear-gradient(90deg, var(--baby-blue-2), var(--lilac-2)); }
+
+  /* ===== HOBI ===== */
+  .hobi-list { list-style: none; display: grid; gap: 1.8mm; }
+  .hobi-list li {
+    font-size: 8.4pt; color: #3c4b5e; line-height: 1.45;
+    background: linear-gradient(135deg, #eef6fd, #f4f0fc);
+    border: 1px solid var(--line); border-radius: 2mm; padding: 1.6mm 2.4mm;
+  }
+  .hobi-list b { color: var(--ink); }
+
+  /* ===== FOOTER / SIGNATURE ===== */
+  footer {
+    padding: 4mm 12mm 8mm;
+    display: flex; justify-content: space-between; align-items: flex-end;
+    gap: 10mm;
+    flex: 0 0 auto;
+  }
+  .ttd { text-align: center; flex: 0 0 auto; }
+  .ttd .kota { font-size: 8.2pt; color: var(--ink-soft); margin-bottom: 1mm; }
+  .ttd .ruang { height: 11mm; }
+  .ttd .nama {
+    font-size: 8.8pt; font-weight: 600; color: var(--ink);
+    border-top: 1px solid #9aa8bb; padding-top: 1.2mm; min-width: 46mm;
+  }
+  .catatan { font-size: 7.2pt; color: #8a99ab; text-align: right; line-height: 1.5; max-width: 62mm; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header>
+    <div class="foto"><img src="profil-web.jpg" alt="Siti Hasanah"></div>
+    <div class="identitas">
+      <div class="sapaan">Curriculum Vitae</div>
+      <h1>Siti Hasanah</h1>
+      <div class="profesi">Lulusan SMKN Sukaresik — Teknik Komputer &amp; Jaringan</div>
+      <div class="kontak-inline">
+        <span>📍 Sukaresik, Kabupaten Tasikmalaya</span>
+        <span>📞 <b>0831-5033-1284</b></span>
+        <span>✉️ <b>sitihasanahhhh441@gmail.com</b></span>
+      </div>
+    </div>
+  </header>
+
+  <div class="isi">
+
+    <!-- ===== KOLOM KIRI ===== -->
+    <div class="kiri">
+
+      <div class="blok">
+        <h2>Data Pribadi</h2>
+        <table class="data">
+          <tr><td class="kunci">Nama Lengkap</td><td>Siti Hasanah</td></tr>
+          <tr><td class="kunci">Tgl. Lahir</td><td>03 Maret 2008</td></tr>
+          <tr><td class="kunci">Usia</td><td>18 tahun</td></tr>
+          <tr><td class="kunci">Jenis Kelamin</td><td>Perempuan</td></tr>
+          <tr><td class="kunci">Agama</td><td>Islam</td></tr>
+          <tr><td class="kunci">Pendidikan</td><td>SMKN Sukaresik</td></tr>
+          <tr><td class="kunci">Email</td><td class="nilai">sitihasanahhhh441@gmail.com</td></tr>
+          <tr><td class="kunci">No. Telp / WA</td><td>0831-5033-1284</td></tr>
+        </table>
+      </div>
+
+      <div class="blok">
+        <h2>Bahasa</h2>
+        <ul class="skill-list">
+          <li><span class="tick">✓</span><span>Bahasa Indonesia</span></li>
+          <li><span class="tick">✓</span><span>Bahasa Inggris (dasar)</span></li>
+          <li><span class="tick">✓</span><span>Bahasa Sunda (dasar)</span></li>
+        </ul>
+      </div>
+
+      <div class="blok">
+        <h2>Hobi</h2>
+        <ul class="hobi-list">
+          <li><b>Memasak</b> — melatih ketelitian, keuletan, dan kreativitas.</li>
+          <li><b>Menonton</b> — film dan konten edukatif untuk menambah wawasan.</li>
+        </ul>
+      </div>
+
+      <div class="blok">
+        <h2>Kemampuan Pribadi</h2>
+        <ul class="skill-list">
+          <li><span class="tick">✓</span><span>Teliti dan teliti dalam mengerjakan tugas.</span></li>
+          <li><span class="tick">✓</span><span>Disiplin serta konsisten menjaga target.</span></li>
+          <li><span class="tick">✓</span><span>Komunikatif dan mudah bekerja sama dengan tim.</span></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- ===== KOLOM KANAN ===== -->
+    <div class="kanan">
+
+      <div class="blok profil">
+        <h2>Profil Singkat</h2>
+        <p>
+          Saya adalah <strong>Siti Hasanah</strong>, lulusan SMKN Sukaresik dengan bidang studi Teknik
+          Komputer dan Jaringan. Saya memiliki kemampuan praktis dalam <strong>konfigurasi MikroTik</strong>,
+          meliputi pengaturan DHCP, NAT, firewall, wireless, share bandwidth, hingga monitoring dan
+          perawatan jaringan.
+        </p>
+        <p>
+          Saya dikenal sebagai pribadi yang <strong>teliti</strong>, <strong>bertanggung jawab</strong>,
+          dan <strong>bersedia belajar</strong>. Saya nyaman bekerja dengan ketelitian, siap bekerja
+          dalam tim maupun secara mandiri, serta berorientasi pada penyelesaian masalah.
+        </p>
+      </div>
+
+      <div class="blok">
+        <h2>Pendidikan</h2>
+        <div class="item">
+          <div class="judul">SMKN Sukaresik</div>
+          <div class="sub">Sekolah Menengah Kejuruan — Teknik Komputer &amp; Jaringan</div>
+          <p>
+            Menempuh pendidikan kejuruan dengan fokus pada bidang teknologi, meliputi praktik
+            <strong>konfigurasi jaringan MikroTik</strong>, dasar jaringan komputer, instalasi
+            perangkat jaringan, serta pengujian aplikasi pada server lokal.
+          </p>
+        </div>
+      </div>
+
+      <div class="blok">
+        <h2>Keahlian Teknis</h2>
+        <div class="keAhli">
+          <div class="baris"><span>Konfigurasi MikroTik</span><span>85%</span></div>
+          <div class="track"><i style="width:85%"></i></div>
+        </div>
+        <div class="keAhli">
+          <div class="baris"><span>Instalasi &amp; Perawatan Jaringan</span><span>80%</span></div>
+          <div class="track"><i style="width:80%"></i></div>
+        </div>
+        <div class="keAhli">
+          <div class="baris"><span>Dasar Jaringan Komputer</span><span>75%</span></div>
+          <div class="track"><i style="width:75%"></i></div>
+        </div>
+        <div class="keAhli">
+          <div class="baris"><span>Microsoft Office &amp; Pengetikan</span><span>80%</span></div>
+          <div class="track"><i style="width:80%"></i></div>
+        </div>
+      </div>
+
+      <div class="blok">
+        <h2>Kemampuan Lain</h2>
+        <ul class="skill-list">
+          <li><span class="tick">✓</span><span>Teliti, disiplin, dan konsisten dalam mengerjakan tugas.</span></li>
+          <li><span class="tick">✓</span><span>Bertanggung jawab dan siap mengambil inisiatif.</span></li>
+          <li><span class="tick">✓</span><span>Mampu bekerja dalam tim maupun secara mandiri.</span></li>
+          <li><span class="tick">✓</span><span>Senang belajar hal baru dan cepat beradaptasi.</span></li>
+          <li><span class="tick">✓</span><span>Menguasai pengetikan cepat dan administrasi dokumen.</span></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <div class="ttd">
+      <div class="kota">Sukaresik, ......................</div>
+      <div class="ruang"></div>
+      <div class="nama">Siti Hasanah</div>
+    </div>
+    <div class="catatan">
+      Website: sitiwelwel02.github.io/biodata<br>
+      Dokumen ini dibuat sebagai pelengkap Curriculum Vitae.
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
